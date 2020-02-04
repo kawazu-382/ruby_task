@@ -132,11 +132,12 @@ def q15
   # 以下に回答を記載
   data_array = [data1, data2]
   data_array.each do |data_aray|
-    if data_aray.key?(:age)
-      p "OK"
-    else
-      p "NG"
-    end
+    # if data_aray.key?(:age)
+    #   p "OK"
+    # else
+    #   p "NG"
+    # end
+    puts data_aray.key?(:age) ? "OK" : "NG"
   end
 end
 
@@ -149,12 +150,28 @@ def q16
   ]
 
   # 以下に回答を記載
-
+  users.each do |user|
+    puts "私の名前は#{user[:name]}です。年齢は#{user[:age]}歳です。"
+  end
 end
 
 class UserQ17
   # 以下に回答を記載
+  def initialize(name:, age:, gender:, admin:)
+    @name = name
+    @age = age
+    @gender = gender
+    @admin = admin == true ? "有り" : "無し"
+  end
 
+  def info
+    puts <<~TEXT
+      名前:#{@name}
+      年齢:#{@age}
+      性別:#{@gender}
+      管理者権限:#{@admin}
+    TEXT
+  end
 end
 
 def q17
