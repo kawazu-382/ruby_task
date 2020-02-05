@@ -131,13 +131,13 @@ def q15
 
   # 以下に回答を記載
   data_array = [data1, data2]
-  data_array.each do |data_aray|
-    # if data_aray.key?(:age)
+  data_array.each do |data|
+    # if data.key?(:age)
     #   p "OK"
     # else
     #   p "NG"
     # end
-    puts data_aray.key?(:age) ? "OK" : "NG"
+    puts data.key?(:age) ? "OK" : "NG"
   end
 end
 
@@ -157,20 +157,20 @@ end
 
 class UserQ17
   # 以下に回答を記載
-  def initialize(name:, age:, gender:, admin:)
-    @name = name
-    @age = age
-    @gender = gender
-    @admin = admin == true ? "有り" : "無し"
+  def initialize(**params)
+    @name = params[:name]
+    @age = params[:age]
+    @gender = params[:gender]
+    @admin = params[:admin] ? "有り" : "無し"
   end
 
   def info
-    puts <<~TEXT
+    puts <<~EOS
       名前:#{@name}
       年齢:#{@age}
       性別:#{@gender}
       管理者権限:#{@admin}
-    TEXT
+    EOS
   end
 end
 
@@ -186,7 +186,18 @@ end
 
 class UserQ18
   # 以下に回答を記載
+  def initialize(name:, age:)
+    @name = name
+    @age = age
+  end
 
+  def introduce
+    if @age >= 20
+      "こんにちは、#{@name}と申します。よろしくお願いします。"
+    else
+      "はいさいまいど〜、#{@name}です！！！"
+    end
+  end
 end
 
 def q18
