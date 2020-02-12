@@ -211,10 +211,15 @@ end
 
 class Item
   # 以下を修正して下さい
-
-  def initialize(name)
+  
+  def initialize(name:)
     @name = name
   end
+
+  attr_accessor :name
+  # def name
+  #   @name
+  # end
 end
 
 def q19
@@ -225,12 +230,34 @@ end
 
 class UserQ20
   # 以下に回答を記載
+  def initialize(name:, age:)
+    @name = name
+    @age = age
+  end
 
+  attr_accessor :name, :age
+ 
 end
 
 class Zoo
   # 以下に回答を記載
+  def initialize(name:, entry_fee:)
+    @name = name
+    @entry_fee = entry_fee
+  end   
 
+  def info_entry_fee(user)
+    fee = if user.age <= 5
+      @entry_fee[:infant]
+    elsif user.age <= 12
+      @entry_fee[:children]
+    elsif user.age <= 64
+      @entry_fee[:adult]
+    else
+      @entry_fee[:senior]
+    end
+    puts "#{user.name}さんの入場料は#{fee}円です。"
+  end
 end
 
 
